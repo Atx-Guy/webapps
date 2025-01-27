@@ -1,0 +1,34 @@
+{
+    "manifest_version": 2,
+    "name": "Auto Copy",
+    "version": "1.0.3",
+    "description": "Automatically copies selected text to clipboard with visual feedback. Works on all websites, including input fields and textareas.",
+    "icons": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png",
+      "128": "icons/icon-128.png"
+    },
+    "permissions": [
+      "clipboardWrite",
+      "activeTab"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"], 
+        "js": ["content-script.js"],
+        "run_at": "document_end" 
+      }
+    ],
+    "background": {
+      "scripts": ["background.js"] 
+    },
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "autocopy@example.com", 
+        "strict_min_version": "57.0" 
+      }
+    },
+    "web_accessible_resources": [
+      "icons/*.png" 
+    ]
+}

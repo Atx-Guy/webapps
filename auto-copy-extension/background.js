@@ -1,0 +1,1 @@
+console.log('Auto Copy background script loaded');
