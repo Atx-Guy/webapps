@@ -186,18 +186,18 @@ def index():
     favorites_only = request.args.get('favorites', type=int)
     search_query = request.args.get('q', '').strip()
     
-    # If no filters are applied, redirect to uncategorized by default
-    if not any([category_id, uncategorized, favorites_only, search_query]):
-        return redirect('/?uncategorized=1')
-    
     # Start with base query
     query = Link.query
-    
-    # Apply filters
-    if category_id:
-        query = query.filter_by(category_id=category_id)
-    elif uncategorized:
-        query = query.filter_by(category_id=None)
+
+    # If no filters are applied, show all links
+    if not any([category_id, uncategorized, favorites_only, search_query]):
+        pass
+    else:
+        # Apply filters
+        if category_id:
+            query = query.filter_by(category_id=category_id)
+        elif uncategorized:
+            query = query.filter_by(category_id=None)
     
     # Apply search if provided
     if search_query:

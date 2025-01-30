@@ -20,6 +20,9 @@
                     <button onclick="showModal()" class="add-category-btn">+</button>
                 </div>
                 <nav class="category-list">
+                    <a href="/" class="category-item {% if not current_category and not uncategorized %}active{% endif %}">
+                        All
+                    </a>
                     <a href="/?uncategorized=1" class="category-item {% if uncategorized %}active{% endif %}">
                         Uncategorized
                     </a>
